@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>INFORTHEC-DMZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Inter&display=swap" rel="stylesheet">
+
+  <style>
+:root {
+      --azul: #1E3A8A;
+      --roxo: #6D28D9;
+      --verde: #10B981;
+      --cinza: #F3F4F6;
+      --branco: #FFFFFF;
+      --vermelho: #DC2626;
+       
+         }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--cinza);
+      color: #333;
+           }
+
+    header {
+      background-color: var(--azul);
+      color: var(--branco);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+}
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+}
+
+    .logo-placeholder {
+      width: 50px;
+      height: 50px;
+      background: var(--verde);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      margin-right: 15px;
+}
+
+    header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8em;
+      margin: 0;
+}
+
+    nav a {
+      margin: 0 10px;
+      color: var(--branco);
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+}
+
+    nav a:hover {
+      text-decoration: underline;
+}
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+      display: none;
+}
+
+    section.active {
+      display: block;
+}
+
+.hero {
+      background: linear-gradient(to right, var(--azul), var(--roxo));
+      color: var(--branco);
+      text-align: center;
+      padding: 80px 20px;
+      display: block !important;
+}
+
+.hero h2 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      font-family: 'Poppins', sans-serif;
+}
+
+.card {
+      background: var(--branco);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+}
+
+.card:hover {
+      transform: scale(1.03);
+}
+
+    form input, form textarea, form select, form button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-family: 'Inter', sans-serif;
+      box-sizing: border-box;
+}
+
+    form button {
+      background-color: var(--verde);
+      color: var(--branco);
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+}
+
+    form button:hover {
+      background-color: #059669;
+}
+
+.login {
+      background: var(--branco);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+}
+
+    footer {
+      background-color: var(--roxo);
+      color: var(--branco);
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+}
+
+    .success-message {
+      background-color: #D1FAE5;
+      color: #065F46;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 10px;
+      display: none;
+}
+
+    .error-message {
+      background-color: #FEE2E2;
+      color: var(--vermelho);
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 10px;
+      display: none;
+}
+
+    .user-panel {
+      background: var(--branco);
+      padding: 20px;l
+      border-radius: 10px;
+      max-width: 600px;
+      margin: auto;
+==      display: none;
+}
+
+    .user-info {
+      background: var(--cinza);
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+}
+
+    .logout-btn {
+      background-color: var(--vermelho) !important;
+      margin-top: 10px;
+}
+
+    .logout-btn:hover {
+      background-color: #B91C1C !important;
+}
+
+    .blog-post {
+      display: none;
+      background: var(--branco);
+      padding: 30px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+}
+
+    .back-btn {
+      background-color: var(--azul) !important;
+      margin-bottom: 20px;
+      width: auto !important;
+      padding: 10px 20px !important;
+}
+
+    .admin-section {
+      display: none;
+      background: var(--branco);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .request-item {
+      background: var(--cinza);
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border-left: 4px solid var(--azul);
+    }
+
+    .status-indicator {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .status-pendente {
+      background-color: #FEF3C7;
+      color: #92400E;
+    }
+
+    .status-processando {
+      background-color: #DBEAFE;
+      color: #1E40AF;
+    }
+
+    .status-concluido {
+      background-color: #D1FAE5;
+      color: #065F46;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-infortech.jpg">
+    <div class="logo-placeholder">DMZ</div>
+    <h1>INFORTHEC-DMZ</h1>
+  </div>
+  <nav>
+    <a onclick="showSection('blog')">Blog</a>
+    <a onclick="showSection('pedido')">Pedidos</a>
+    <a onclick="showSection('login')" id="loginNavLink">Área do Cliente</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2> BEM VINDO </h2>
+<h2>Conectando ideias, soluções e pessoas</h2>
+  <p>Bem-vindo ao seu espaço digital profissional. Aqui você mostra, vende e cresce.</p>
+</section>
+
+<section id="blog" class="active">
+  <h2>BLOG curiosos-DMZ</h2>
+  <div class="card">
+    <h3>Como criar um site profissional</h3>
+    <p><strong>Publicado em:</strong> 24/08/2025 | <strong>Autor:</strong> Equipe INFORTHEC-DMZ</p>
+    <p>Aprenda os passos essenciais para montar um site que impressiona e converte visitantes em clientes.</p>
+    <button onclick="showBlogPost('post1')">Leia mais</button>
+  </div>
+  
+  <div id="post1" class="blog-post">
+    <button class="back-btn" onclick="hideBlogPost()">← Voltar ao Blog</button>
+    <h2>Como criar um site profissional</h2>
+    <p><em>Publicado em 24/08/2025 por Equipe INFORTHEC-DMZ</em></p>
+    
+    <h3>1. Planejamento é fundamental</h3>
+    <p>Antes de começar a desenvolver, defina claramente os objetivos do seu site. Quem é seu público-alvo? Que ação você quer que eles realizem?</p>
+    
+    <h3>2. Escolha das tecnologias</h3>
+    <p>Para sites profissionais, recomendamos HTML5, CSS3 e JavaScript moderno. Para projetos maiores, considere frameworks como React ou Vue.js.</p>
+    
+    <h3>3. Design responsivo</h3>
+    <p>Mais de 60% dos acessos vêm de dispositivos móveis. Certifique-se de que seu site funciona perfeitamente em todas as telas.</p>
+    
+    <h3>4. Performance e SEO</h3>
+    <p>Sites rápidos convertem melhor. Otimize imagens, use .CDNs e implemente boas práticas de SEO desde o início.</p>
+    
+    <p><strong>Conclusão:</strong> Um site profissional é um investimento no crescimento do seu negócio. Invista tempo no planejamento e na execução.</p>
+  </div>
+  
+  <div class="card">
+    <h3>Design que vende: dicas visuais</h3>
+    <p><strong>Publicado em:</strong> 20/08/2025 | <strong>Autor:</strong> Design Team</p>
+    <p>Descubra como cores, fontes e layout influenciam a decisão do cliente na hora da compra.</p>
+    <button onclick="showBlogPost('post2')">Leia mais</button>
+  </div>
+  
+  <div id="post2" class="blog-post">
+    <button class="back-btn" onclick="hideBlogPost()">← Voltar ao Blog</button>
+    <h2>Design que vende: dicas visuais</h2>
+    <p><em>Publicado em 20/08/2025 por Design Team</em></p>
+    
+    <h3>A psicologia das cores</h3>
+    <p>Azul transmite confiança e é ideal para empresas de tecnologia. Verde sugere crescimento e sustentabilidade. Vermelho cria urgência e é perfeito para calls-to-action.</p>
+    
+    <h3>Tipografia que comunica</h3>
+    <p>Use no máximo 2 fontes diferentes. Uma para títulos (como Poppins) e outra para texto corrido (como Inter). Mantenha a hierarquia visual clara.</p>
+    
+    <h3>Espaçamento e respiração</h3>
+    <p>O espaço em branco não é desperdício - é ferramenta de design. Ele guia o olhar e melhora a legibilidade.</p>
+    
+    <h3>Call-to-Action eficazes</h3>
+    <p>Botões devem ser destacados, usar verbos de ação e criar senso de urgência. "Compre agora" funciona melhor que "Clique aqui".</p>
+  </div>
+</section>
+
+<section id="pedido">
+  <h2>Solicite um Serviço</h2>
+  <form id="serviceForm">
+    <input type="text" id="clientName" placeholder="Seu nome" required>
+    <input type="email" id="clientEmail" placeholder="Seu e-mail" required>
+    <select id="serviceType" required>
+      <option value="">Escolha o serviço</option>
+      <option value="website">Criação de site</option>
+      <option value="design">Design gráfico</option>
+      <option value="consultoria">Consultoria digital</option>
+      <option value="Redes de computadores">Implementação de Redes domésticas</option>
+      <option value="Sistemas operacionais">Windows7,8,10, 11</option>
+    </select>
+    <textarea id="serviceDescription" placeholder="Descreva detalhadamente seu pedido" rows="5" required></textarea>
+    <input type="number" id="estimatedBudget" placeholder="Quanto está disposto a pagar? (em Kz ou R$)" min="0">
+    <button type="submit">Enviar Pedido</button>
+    
+    <div id="serviceSuccess" class="success-message">
+      Pedido enviado com sucesso! Nossa equipe entrará em contato em até 24 horas.
+    </div>
+    <div id="serviceError" class="error-message">
+      Erro ao enviar pedido. Verifique os dados e tente novamente.
+    </div>
+  </form>
+</section>
+
+<section id="login">
+  <h2>Área do Cliente</h2>
+  
+  <div class="login" id="loginForm">
+    <form id="loginFormElement">
+      <input type="text" id="username" placeholder="Usuário" required>
+      <input type="password" id="password" placeholder="Senha" required>
+      <button type="submit">Entrar</button>
+      
+      <div id="loginError" class="error-message">
+        Usuário ou senha incorretos. Tente: admin/admin123 ou cliente/cliente123
+      </div>
+    </form>
+    
+    <div style="margin-top: 20px; padding: 15px; background: #F0F9FF; border-radius: 5px; font-size: 14px;">
+      <strong>Contas de teste:</strong><br>
+      👨‍💼 Admin: <code>admin</code> / <code>admin123</code><br>
+      👤 Cliente: <code>cliente</code> / <code>cliente123</code>
+    </div>
+  </div>
+  
+  <div class="user-panel" id="userPanel">
+    <div class="user-info" id="userInfo"></div>
+    
+    <h3>Meus Pedidos</h3>
+    <div id="userRequests"></div>
+    
+    <div class="admin-section" id="adminSection">
+      <h3>🔧 Painel Administrativo</h3>
+      <p>Todos os pedidos recebidos:</p>
+      <div id="allRequests"></div>
+    </div>
+    
+    <button class="logout-btn" onclick="logout()">Sair</button>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 INFORTHEC-DMZ</p>
+  <p>Tecnologia que conecta ideias.</p>
+  <p> email 📩: menezesdaniel451@gmail.com 
+                         </p>
+  <p> Site em desenvolvimento Desenvolvedor: Daniel Menezes Monteiro                 </p>
+</footer>
+
+<script>
+// Sistema de armazenamento em memória (simula backend)
+let appData = {
+  users: {
+    'admin': { password: 'admin123', role: 'admin', name: 'Administrador' },
+    'cliente': { password: 'cliente123', role: 'client', name: 'Cliente Demo' }
+  },
+  requests: [],
+  currentUser: null
+};
+
+// Controle de navegação entre seções
+function showSection(sectionId) {
+  // Esconde todas as seções
+  const sections = document.querySelectorAll('section:not(.hero)');
+  sections.forEach(section => section.classList.remove('active'));
+  
+  // Mostra a seção solicitada
+  document.getElementById(sectionId).classList.add('active');
+  
+  // Atualiza navegação
+  if (sectionId === 'login' && appData.currentUser) {
+    updateUserPanel();
+  }
+}
+
+// Sistema de blog
+function showBlogPost(postId) {
+  document.getElementById(postId).style.display = 'block';
+  // Esconde os cards do blog
+  const cards = document.querySelectorAll('#blog .card');
+  cards.forEach(card => card.style.display = 'none');
+}
+
+function hideBlogPost() {
+  const posts = document.querySelectorAll('.blog-post');
+  posts.forEach(post => post.style.display = 'none');
+  // Mostra os cards do blog
+  const cards = document.querySelectorAll('#blog .card');
+  cards.forEach(card => card.style.display = 'block');
+}
+
+// Sistema de formulário de pedidos
+document.getElementById('serviceForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const formData = {
+    id: Date.now(),
+    name: document.getElementById('clientName').value,
+    email: document.getElementById('clientEmail').value,
+    service: document.getElementById('serviceType').value,
+    description: document.getElementById('serviceDescription').value,
+    budget: document.getElementById('estimatedBudget').value,
+    status: 'pendente',
+    date: new Date().toLocaleDateString('pt-BR'),
+    user: appData.currentUser ? appData.currentUser : document.getElementById('clientEmail').value
+  };
+  
+  // Validação básica
+  if (!formData.name || !formData.email || !formData.service || !formData.description) {
+    showMessage('serviceError');
+    return;
+  }
+  
+  // Salva o pedido
+  appData.requests.push(formData);
+  
+  // Mostra mensagem de sucesso
+  showMessage('serviceSuccess');
+  
+  // Limpa o formulário
+  document.getElementById('serviceForm').reset();
+  
+  // Simula processamento backend
+  setTimeout(() => {
+    const request = appData.requests.find(r => r.id === formData.id);
+    if (request) request.status = 'processando';
+  }, 3000);
+});
+
+// Sistema de login
+document.getElementById('loginFormElement').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+  
+  if (appData.users[username] && appData.users[username].password === password) {
+    appData.currentUser = username;
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('userPanel').style.display = 'block';
+    document.getElementById('loginNavLink').textContent = `👤 ${appData.users[username].name}`;
+    updateUserPanel();
+  } else {
+    showMessage('loginError');
+  }
+});
+
+// Atualiza painel do usuário
+function updateUserPanel() {
+  const user = appData.users[appData.currentUser];
+  const userInfo = document.getElementById('userInfo');
+  
+  userInfo.innerHTML = `
+    <h3>👋 Bem-vindo, ${user.name}!</h3>
+    <p><strong>Usuário:</strong> ${appData.currentUser}</p>
+    <p><strong>Tipo:</strong> ${user.role === 'admin' ? 'Administrador' : 'Cliente'}</p>
+    <p><strong>Último acesso:</strong> ${new Date().toLocaleString('pt-BR')}</p>
+  `;
+  
+  // Mostra pedidos do usuário
+  updateUserRequests();
+  
+  // Se for admin, mostra painel administrativo
+  if (user.role === 'admin') {
+    document.getElementById('adminSection').style.display = 'block';
+    updateAllRequests();
+  }
+}
+
+// Atualiza pedidos do usuário
+function updateUserRequests() {
+  const userRequestsDiv = document.getElementById('userRequests');
+  const userRequests = appData.requests.filter(r => 
+    r.user === appData.currentUser || r.email === appData.currentUser
+  );
+  
+  if (userRequests.length === 0) {
+    userRequestsDiv.innerHTML = '<p>Você ainda não fez nenhum pedido.</p>';
+    return;
+  }
+  
+  userRequestsDiv.innerHTML = userRequests.map(request => `
+    <div class="request-item">
+      <h4>Pedido #${request.id}</h4>
+      <p><strong>Serviço:</strong> ${getServiceName(request.service)}</p>
+      <p><strong>Data:</strong> ${request.date}</p>
+      <p><strong>Orçamento:</strong> ${request.budget ? `${request.budget} Kz/R$` : 'A definir'}</p>
+      <p><strong>Descrição:</strong> ${request.description}</p>
+      <span class="status-indicator status-${request.status}">${getStatusName(request.status)}</span>
+    </div>
+  `).join('');
+}
+
+// Atualiza todos os pedidos (admin)
+function updateAllRequests() {
+  const allRequestsDiv = document.getElementById('allRequests');
+  
+  if (appData.requests.length === 0) {
+    allRequestsDiv.innerHTML = '<p>Nenhum pedido recebido ainda.</p>';
+    return;
+  }
+  
+  allRequestsDiv.innerHTML = appData.requests.map(request => `
+    <div class="request-item">
+      <h4>Pedido #${request.id}</h4>
+      <p><strong>Cliente:</strong> ${request.name} (${request.email})</p>
+      <p><strong>Serviço:</strong> ${getServiceName(request.service)}</p>
+      <p><strong>Data:</strong> ${request.date}</p>
+      <p><strong>Orçamento:</strong> ${request.budget ? `${request.budget} Kz/R$` : 'A definir'}</p>
+      <p><strong>Descrição:</strong> ${request.description}</p>
+      <span class="status-indicator status-${request.status}">${getStatusName(request.status)}</span>
+    </div>
+  `).join('');
+}
+
+// Logout
+function logout() {
+  appData.currentUser = null;
+  document.getElementById('loginForm').style.display = 'block';
+  document.getElementById('userPanel').style.display = 'none';
+  document.getElementById('loginNavLink').textContent = 'Área do Cliente';
+  document.getElementById('loginFormElement').reset();
+  showSection('blog');
+}
+
+// Funções auxiliares
+function showMessage(messageId) {
+  const message = document.getElementById(messageId);
+  message.style.display = 'block';
+  setTimeout(() => {
+    message.style.display = 'none';
+  }, 5000);
+}
+
+function getServiceName(service) {
+  const services = {
+    'website': 'Criação de site',
+    'design': 'Design gráfico',
+    'consultoria': 'Consultoria digital',
+    'manutencao': 'Manutenção de site',
+    'Redes de computadores': 'instalação de redes domesticas'
+  };
+  return services[service] || service;
+}
+
+function getStatusName(status) {
+  const statuses = {
+    'pendente': 'Pendente',
+    'processando': 'Em processamento',
+    'concluido': 'Concluído'
+  };
+  return statuses[status] || status;
+}
+
+// Simula mudanças de status dos pedidos
+setInterval(() => {
+  appData.requests.forEach(request => {
+    if (request.status === 'pendente' && Math.random() < 0.1) {
+      request.status = 'processando';
+    } else if (request.status === 'processando' && Math.random() < 0.05) {
+      request.status = 'concluido';
+    }
+  });
+  
+  if (appData.currentUser) {
+    updateUserRequests();
+    if (appData.users[appData.currentUser].role === 'admin') {
+      updateAllRequests();
+    }
+  }
+}, 5000);
+
+// Inicialização
+document.addEventListener('DOMContentLoaded', function() {
+  showSection('blog');
+  
+  // Adiciona alguns pedidos de exemplo
+  appData.requests = [
+    {
+      id: 1001,
+      name: 'Maria Silva',
+      email: 'maria@email.com',
+      service: 'website',
+      description: 'Preciso de um site para minha loja de roupas com catálogo online.',
+      budget: '15000',
+      status: 'processando',
+      date: '23/08/2025',
+      user: 'maria@email.com'
+    },
+    {
+      id: 1002,
+      name: 'João Santos',
+      email: 'joao@empresa.com',
+      service: 'consultoria',
+      description: 'Consultoria para melhorar presença digital da empresa.',
+      budget: '8000',
+      status: 'concluido',
+      date: '22/08/2025',
+      user: 'joao@empresa.com'
+    }
+  ];
+});
+</script>
+
+</body>
+</html>
